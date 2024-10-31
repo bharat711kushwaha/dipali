@@ -1,0 +1,185 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+
+.background-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('banner.jpg'); /* Replace with your photo path */
+    background-repeat: no-repeat;
+    background-size: cover; /* Cover the whole screen */
+    background-position: center top; /* Center the image */
+    z-index: -2; /* Send it behind everything */
+}
+
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the video */
+    width: 100%; /* Customize width */
+    height: 100%; /* Customize height */
+    overflow: hidden;
+    z-index: -1; /* Send it to the background */
+}
+
+.background-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Make video cover the container */
+}
+
+.container {
+    text-align: center;
+    color: #581010;
+    position: relative; /* Ensure container is above the video */
+    z-index: 1;
+}
+
+.textmessage {
+    font-size: 48px;
+    text-shadow: 0 0 10px #f70707, 0 0 20px #ffd700; /* Lighter shadow for better contrast */
+    margin-bottom: 10px;
+    color: #cea605; /* Light cream color for better visibility */
+}
+
+.by {
+    font-size: 24px;
+    color: hsl(355, 90%, 48%); /* Soft yellow for a pleasant look */
+}
+
+
+.lights {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-image: radial-gradient(circle, rgba(255,204,0,0.5) 30%, rgba(255,255,255,0) 70%);
+    animation: lightAnimation 1s infinite alternate;
+    cursor: pointer; /* Makes it clear it's clickable */
+    margin: 20px 0;
+}
+
+@keyframes lightAnimation {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.diyas {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.diya {
+    width: 50px;
+    height: 70px;
+    background-color: #b76e3d;
+    border-radius: 50% 50% 0 0;
+    position: relative;
+    margin: 0 10px;
+    animation: flicker 0.2s infinite alternate;
+}
+
+.diya:before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #ffcc00;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
+.decorative-text {
+    margin-top: 40px;
+    font-size: 32px;
+    color: #ffd700;
+    animation: textAnimation 4s infinite alternate;
+}
+
+@keyframes textAnimation {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-20px) rotate(-10deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+}
+
+.fireworks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+.firework {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, rgba(255, 204, 0, 0.8), rgba(255, 0, 0, 0));
+    border-radius: 50%;
+    animation: explode 0.8s ease-out forwards;
+}
+
+@keyframes explode {
+    0% {
+        transform: translateX(-50%) translateY(100%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateX(-50%) translateY(-200%) scale(2);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-250%) scale(0);
+    }
+}
+
+/* Optional: Multiple colors for fireworks */
+.firework:nth-child(2) {
+    background: radial-gradient(circle, rgba(0, 204, 255, 0.8), rgba(0, 0, 255, 0));
+}
+.firework:nth-child(3) {
+    background: radial-gradient(circle, rgba(0, 255, 0, 0.8), rgba(0, 128, 0, 0));
+}
+.firework:nth-child(4) {
+    background: radial-gradient(circle, rgba(255, 0, 255, 0.8), rgba(128, 0, 128, 0));
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Happy Diwali 2024</title>
+</head>
+<body>
+    <div class="background-photo" id="backgroundPhoto"></div> <!-- Background photo -->
+    
+    <div class="background-video" style="display: none;">
+        <video id="myVideo" controls>
+            <source src="dip.mp4" type="video/mp4"> <!-- Replace with your video file -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <audio id="background-music" loop>
+        <source src="background-music.mp3" type="audio/mpeg"> <!-- Add your music file here -->
+        Your browser does not support the audio tag.
+    </audio>
+
+    <div class="container">
+        <h1 class="message">Wishing My Wonderful Friends a Joyous Diwali!</h1>
+        <p class="by">Warm Wishes, Bharat</p>
+        <p class="by">May this Diwali bring you all joy, success, and countless blessings!</p>
+        
+        <div class="lights" id="lights">💡 Click here to light up the wishes!</div>
+        <div class="diyas">
+            <div class="diya"></div>
+            <div class="diya"></div>
+            <div class="diya"></div>
+            <div class="diya"></div>
+            <div class="diya"></div>
+        </div>
+        <div class="decorative-text" id="wishText">Wishing you joy and prosperity!</div>
+        
+        <button id="playButton">Play Video</button> <!-- Play button -->
+    </div>
+    
+    <div class="fireworks"></div> <!-- Fireworks container -->
+
+    <script>
+        document.getElementById('lights').addEventListener('click', function() {
+            const wishes = [
+                "May this Diwali bring you joy and prosperity!",
+                "Wishing you and your family a prosperous Diwali!",
+                "Let the lights of Diwali fill your life with happiness!",
+                "May your life be as colorful as the rangoli!",
+                "Celebrate the festival of lights with love and happiness!"
+            ];
+            const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+            document.getElementById('wishText').innerText = randomWish; // Display wish on screen
+
+            // Play music on first interaction
+            const music = document.getElementById('background-music');
+            music.play();
+        });
+
+        document.getElementById('playButton').addEventListener('click', function() {
+            const video = document.getElementById('myVideo');
+            const backgroundVideo = document.querySelector('.background-video');
+            const backgroundPhoto = document.getElementById('backgroundPhoto');
+
+            backgroundPhoto.style.display = 'none'; // Hide the background photo
+            backgroundVideo.style.display = 'block'; // Show the video
+            video.play(); // Play the video on button click
+
+            // Refresh the page when the video ends
+            video.addEventListener('ended', function() {
+                location.reload(); // Refresh the page
+            });
+        });
+
+        function createFirework() {
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            document.querySelector('.fireworks').appendChild(firework);
+
+            // Remove firework after animation
+            firework.addEventListener('animationend', () => {
+                firework.remove();
+            });
+        }
+    </script>
+</body>
+</html>
